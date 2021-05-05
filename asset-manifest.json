@@ -1,20 +1,23 @@
 {
   "files": {
-    "main.js": "/rabo_react_FE/static/js/main.335bc280.chunk.js",
-    "main.js.map": "/rabo_react_FE/static/js/main.335bc280.chunk.js.map",
+    "main.css": "/rabo_react_FE/static/css/main.9e53854d.chunk.css",
+    "main.js": "/rabo_react_FE/static/js/main.8bae2cdc.chunk.js",
+    "main.js.map": "/rabo_react_FE/static/js/main.8bae2cdc.chunk.js.map",
     "runtime-main.js": "/rabo_react_FE/static/js/runtime-main.909e6231.js",
     "runtime-main.js.map": "/rabo_react_FE/static/js/runtime-main.909e6231.js.map",
     "static/css/2.540b1314.chunk.css": "/rabo_react_FE/static/css/2.540b1314.chunk.css",
-    "static/js/2.24ac01b1.chunk.js": "/rabo_react_FE/static/js/2.24ac01b1.chunk.js",
-    "static/js/2.24ac01b1.chunk.js.map": "/rabo_react_FE/static/js/2.24ac01b1.chunk.js.map",
+    "static/js/2.abb4f585.chunk.js": "/rabo_react_FE/static/js/2.abb4f585.chunk.js",
+    "static/js/2.abb4f585.chunk.js.map": "/rabo_react_FE/static/js/2.abb4f585.chunk.js.map",
     "index.html": "/rabo_react_FE/index.html",
     "static/css/2.540b1314.chunk.css.map": "/rabo_react_FE/static/css/2.540b1314.chunk.css.map",
-    "static/js/2.24ac01b1.chunk.js.LICENSE.txt": "/rabo_react_FE/static/js/2.24ac01b1.chunk.js.LICENSE.txt"
+    "static/css/main.9e53854d.chunk.css.map": "/rabo_react_FE/static/css/main.9e53854d.chunk.css.map",
+    "static/js/2.abb4f585.chunk.js.LICENSE.txt": "/rabo_react_FE/static/js/2.abb4f585.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.909e6231.js",
     "static/css/2.540b1314.chunk.css",
-    "static/js/2.24ac01b1.chunk.js",
-    "static/js/main.335bc280.chunk.js"
+    "static/js/2.abb4f585.chunk.js",
+    "static/css/main.9e53854d.chunk.css",
+    "static/js/main.8bae2cdc.chunk.js"
   ]
 }
