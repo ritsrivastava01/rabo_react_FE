@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import LoginPage from './components/login/LoginPage';
+import { Route, Switch } from 'react-router-dom';
+import PageNotFound from './components/PageNotFound';
+import Header from './components/common/Header';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header> </Header>
+      <div className="container">
+        <Switch>
+          <Route exact path="/" component={LoginPage}></Route>
+          <Route component={PageNotFound}></Route>
+        </Switch>
+      </div>
+      <ToastContainer autoClose={3000} hideProgress></ToastContainer>
+    </>
   );
 }
 
