@@ -3,7 +3,6 @@ import * as userAPI from '../../services/UserService';
 import { sleep, validateEmail, validatePassword } from '.././../utils/Utils';
 import LoginForm from './LoginForm';
 import { toast } from 'react-toastify';
-import * as messages from '../../utils/Messages';
 
 //initial user state
 export const initialUserState = {
@@ -58,15 +57,15 @@ const LoginPage = () => {
     try {
       setApiCallInProgress(true);
       const res = await userAPI.saveUser(payload);
-      if (res.status === 200) toast.success(messages.USER_SAVED_SUCCESS);
+      if (res.status === 200) toast.success('User saved successfully!');
 
       await sleep(4000);
       const resGetUser = await userAPI.getUser();
-      if (resGetUser.data) toast.success(messages.USER_RETRIEVE_SUCCESS);
+      if (resGetUser.data) toast.success('User retrieved successfully!');
       setApiCallInProgress(false);
     } catch (error) {
       setApiCallInProgress(false);
-      toast.error(messages.ERROR_API);
+      toast.error('Something went wrong. Please try again!');
     }
   };
 
@@ -76,14 +75,17 @@ const LoginPage = () => {
   const isFormValid = () => {
     const { fname, lname, password, email } = user;
     const errors = {};
-    if (!fname) errors.fname = messages.ERROR_FIRST_NAME;
-    if (!lname) errors.lname = messages.ERROR_LAST_NAME;
-    if (!email) errors.email = messages.ERROR_EMAIL;
-    if (email && !validateEmail(email)) errors.email = messages.ERROR_EMAIL;
+    if (!fname) errors.fname = 'Please enter the first name';
+    if (!lname) errors.lname = 'Please enter the last name';
+    if (!email) errors.email = 'Please enter the valid email';
+    if (email && !validateEmail(email))
+      errors.email = 'Please enter a valid Email.';
 
-    if (!password) errors.password = messages.ERROR_MISSING_PASSWORD;
+    if (!password) errors.password = 'Please enter the password';
     if (password && !validatePassword(password, fname, lname))
-      errors.password = messages;
+      errors.password = `Password should not include First or Last name.
+        Password Should contain minimum 8 character and
+        should include one capital and one small letter.`;
 
     setErrors(errors);
     return Object.keys(errors).length === 0;

@@ -5,6 +5,7 @@ import Header from './components/common/Header';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <Header> </Header>
       <div className="container">
         <Switch>
-          <Route exact path="/" component={LoginPage}></Route>
+          <Route path="/" component={LoginPage}></Route>
           <Route component={PageNotFound}></Route>
         </Switch>
       </div>
