@@ -1,5 +1,7 @@
 import React from 'react';
-
+/**
+ * Header component
+ */
 const Header = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light mb-5">

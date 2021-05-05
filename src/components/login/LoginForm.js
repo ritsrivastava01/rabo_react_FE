@@ -1,5 +1,12 @@
 import TextInput from '../common/TextInput';
-
+/**
+ * Dump component
+ * @param  {} {apiCallStatus ==> API status, true false
+ * @param  {} user ==> user
+ * @param  {} onChange ==> Form input handler
+ * @param  {} onSave ==> Form save handler
+ * @param  {} errors} ==> Errors on the form
+ */
 const LoginForm = ({ apiCallStatus, user, onChange, onSave, errors }) => {
   return (
     <form onSubmit={onSave} noValidate>

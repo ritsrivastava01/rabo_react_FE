@@ -3,13 +3,29 @@ import * as userAPI from '../../services/UserService';
 import { sleep, validateEmail, validatePassword } from '.././../utils/Utils';
 import LoginForm from './LoginForm';
 import { toast } from 'react-toastify';
-import { initialUserState } from '../../utils/useUserDataManager';
+import * as messages from '../../utils/Messages';
 
+//initial user state
+export const initialUserState = {
+  fname: '',
+  lname: '',
+  email: '',
+  password: '',
+};
+
+/**
+ * Login page ==> smart component
+ * Used to handle the state update, errors, api calls
+ */
 const LoginPage = () => {
   const [user, setUser] = useState(initialUserState);
   const [errors, setErrors] = useState({});
   const [apiCallInProgress, setApiCallInProgress] = useState(false);
 
+  /**
+   * update the user fields
+   * @param  {} event
+   */
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
     user[name] = value;
@@ -19,14 +35,21 @@ const LoginPage = () => {
       [name]: value,
     }));
   };
-
+  /**
+   * Save handler for user form
+   * @param  {} event
+   */
   const onSaveHandler = (event) => {
     event.preventDefault();
     if (!isFormValid()) return;
     postUser();
   };
+
+  /**
+   * Post the user data
+   */
   const postUser = async () => {
-    const data = {
+    const payload = {
       firstName: user.fname,
       lastName: user.lname,
       email: user.email,
@@ -34,39 +57,41 @@ const LoginPage = () => {
 
     try {
       setApiCallInProgress(true);
-      const res = await userAPI.saveUser(user);
-      if (res.status === 200) toast.success('User saved successfully!');
+      const res = await userAPI.saveUser(payload);
+      if (res.status === 200) toast.success(messages.USER_SAVED_SUCCESS);
 
       await sleep(4000);
       const resGetUser = await userAPI.getUser();
-      if (resGetUser.data) toast.success('User retrieved successfully!');
+      if (resGetUser.data) toast.success(messages.USER_RETRIEVE_SUCCESS);
       setApiCallInProgress(false);
     } catch (error) {
       setApiCallInProgress(false);
-      toast.error('Something went wrong. Please try again!');
+      toast.error(messages.ERROR_API);
     }
   };
 
+  /**
+   * Validate the form
+   */
   const isFormValid = () => {
     const { fname, lname, password, email } = user;
     const errors = {};
-    if (!fname) errors.fname = 'Please enter the first name';
-    if (!lname) errors.lname = 'Please enter the last name';
-    if (!email) errors.email = 'Please enter the valid email';
-    if (email && !validateEmail(email))
-      errors.email = 'Please enter a valid Email.';
+    if (!fname) errors.fname = messages.ERROR_FIRST_NAME;
+    if (!lname) errors.lname = messages.ERROR_LAST_NAME;
+    if (!email) errors.email = messages.ERROR_EMAIL;
+    if (email && !validateEmail(email)) errors.email = messages.ERROR_EMAIL;
 
-    if (!password) errors.password = 'Please enter the password';
+    if (!password) errors.password = messages.ERROR_MISSING_PASSWORD;
     if (password && !validatePassword(password, fname, lname))
-      errors.password = `Password should not include First or Last name.
-        Password Should contain minimum 8 character and
-        should include one capital and one small letter.`;
+      errors.password = messages;
 
-    //setErrors(errors);
     setErrors(errors);
     return Object.keys(errors).length === 0;
   };
 
+  /**
+   * Login form
+   */
   return (
     <LoginForm
       user={user}
