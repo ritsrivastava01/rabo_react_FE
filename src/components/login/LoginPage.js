@@ -1,16 +1,10 @@
 import { useState } from 'react';
 import * as userAPI from '../../services/UserService';
-import { sleep, validateEmail, validatePassword } from '.././../utils/Utils';
+import { sleep, initialUserState } from '.././../utils/Utils';
 import LoginForm from './LoginForm';
 import { toast } from 'react-toastify';
-
-//initial user state
-export const initialUserState = {
-  fname: '',
-  lname: '',
-  email: '',
-  password: '',
-};
+import { validateUserForm } from '../../utils/Validation';
+import { messages } from '../../utils/Messages';
 
 /**
  * Login page ==> smart component
@@ -27,13 +21,12 @@ const LoginPage = () => {
    */
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
-    user[name] = value;
-
     setUser((user) => ({
       ...user,
       [name]: value,
     }));
   };
+
   /**
    * Save handler for user form
    * @param  {} event
@@ -53,41 +46,51 @@ const LoginPage = () => {
       lastName: user.lname,
       email: user.email,
     };
+    await saveCall(payload);
+    await waitScreen();
+    await getCall();
+  };
 
-    try {
-      setApiCallInProgress(true);
-      const resSaveUser = await userAPI.saveUser(payload);
-      if (resSaveUser.status === 200) toast.success('User saved successfully!');
+  /**
+   * async save call
+   * @param  {} payload
+   */
+  const saveCall = async (payload) => {
+    setApiCallInProgress(true);
+    const resSaveUser = await userAPI.saveUser(payload);
+    console.log(resSaveUser);
+    setApiCallInProgress(false);
+    if (resSaveUser.error) return toast.error(resSaveUser.error);
+    if (resSaveUser.status === 200) toast.success(messages.SAVE_USER_SUCCESS);
+  };
 
-      await sleep(4000);
-      const resGetUser = await userAPI.getUser();
-      if (resGetUser.data) toast.success('User retrieved successfully!');
-      setApiCallInProgress(false);
-    } catch (error) {
-      setApiCallInProgress(false);
-      toast.error('Something went wrong. Please try again!');
-    }
+  /**
+   * Wait for 4 sec
+   */
+  const waitScreen = async () => {
+    setApiCallInProgress(true);
+    await sleep(4000);
+    setApiCallInProgress(false);
+  };
+
+  /**
+   * async get user call
+   */
+  const getCall = async () => {
+    setApiCallInProgress(true);
+    const resGetUser = await userAPI.getUser();
+    setApiCallInProgress(false);
+    if (resGetUser.error) return toast.error(resGetUser.error);
+    if (resGetUser.data) toast.success('User retrieved successfully!');
   };
 
   /**
    * Validate the form
    */
   const isFormValid = () => {
-    const { fname, lname, password, email } = user;
-    const errors = {};
-    if (!fname) errors.fname = 'Please enter the first name';
-    if (!lname) errors.lname = 'Please enter the last name';
-    if (!email) errors.email = 'Please enter the valid email';
-    if (email && !validateEmail(email))
-      errors.email = 'Please enter a valid Email.';
-
-    if (!password) errors.password = 'Please enter the password';
-    if (password && !validatePassword(password, fname, lname))
-      errors.password = `Password should not include First or Last name.
-        Password Should contain minimum 8 character and
-        should include one capital and one small letter.`;
-
+    const errors = validateUserForm(user);
     setErrors(errors);
+    console.log(errors);
     return Object.keys(errors).length === 0;
   };
 

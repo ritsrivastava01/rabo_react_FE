@@ -5,13 +5,13 @@ import React from 'react';
  */
 const Header = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-warning mb-5 shadow-sm">
+    <nav className="navbar navbar-expand-lg navbar-light bg-warning mb-5 shadow">
       <img
         src="/rabo_react_FE/rabobank_logo.png"
-        style={{ height: 50 }}
+        className="logo "
         alt="Rabo bank Logo"
       ></img>
-      <h3 className="p-2">RABO Bank login Page</h3>
+      <h3 className="p-2 d-none d-md-block ">RABO Bank sign-up</h3>
     </nav>
   );
 };
