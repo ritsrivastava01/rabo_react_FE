@@ -47,7 +47,7 @@ const LoginPage = () => {
       email: user.email,
     };
     await saveCall(payload);
-    await waitScreen();
+    await wait();
     await getCall();
   };
 
@@ -67,7 +67,7 @@ const LoginPage = () => {
   /**
    * Wait for 4 sec
    */
-  const waitScreen = async () => {
+  const wait = async () => {
     setApiCallInProgress(true);
     await sleep(4000);
     setApiCallInProgress(false);
@@ -81,7 +81,7 @@ const LoginPage = () => {
     const resGetUser = await userAPI.getUser();
     setApiCallInProgress(false);
     if (resGetUser.error) return toast.error(resGetUser.error);
-    if (resGetUser.data) toast.success('User retrieved successfully!');
+    if (resGetUser.data) toast.success(messages.SAVE_USER_SUCCESS);
   };
 
   /**
