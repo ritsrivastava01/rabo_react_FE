@@ -16,7 +16,7 @@ const LoginForm = ({ apiCallStatus, user, onChange, onSave, errors }) => {
             type="input"
             name="fname"
             title="First Name"
-            placeholder="Your first name"
+            placeholder="First name"
             onChange={onChange}
             value={user.fname}
             error={errors.fname}
@@ -26,7 +26,7 @@ const LoginForm = ({ apiCallStatus, user, onChange, onSave, errors }) => {
             type="text"
             name="password"
             title="Password"
-            placeholder="Your password"
+            placeholder="Password"
             onChange={onChange}
             value={user.password}
             error={errors.password}
@@ -37,7 +37,7 @@ const LoginForm = ({ apiCallStatus, user, onChange, onSave, errors }) => {
             type="input"
             name="lname"
             title="Last Name"
-            placeholder="Your last name"
+            placeholder="Last name"
             onChange={onChange}
             value={user.lname}
             error={errors.lname}
@@ -46,7 +46,7 @@ const LoginForm = ({ apiCallStatus, user, onChange, onSave, errors }) => {
             type="email"
             name="email"
             title="Email"
-            placeholder="Your first name"
+            placeholder="Email address"
             onChange={onChange}
             value={user.email}
             error={errors.email}

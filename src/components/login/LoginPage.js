@@ -56,8 +56,8 @@ const LoginPage = () => {
 
     try {
       setApiCallInProgress(true);
-      const res = await userAPI.saveUser(payload);
-      if (res.status === 200) toast.success('User saved successfully!');
+      const resSaveUser = await userAPI.saveUser(payload);
+      if (resSaveUser.status === 200) toast.success('User saved successfully!');
 
       await sleep(4000);
       const resGetUser = await userAPI.getUser();
