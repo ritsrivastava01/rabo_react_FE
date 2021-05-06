@@ -11,7 +11,7 @@ const Header = () => {
         className="logo "
         alt="Rabo bank Logo"
       ></img>
-      <h3 className="p-2 d-none d-md-block ">RABO Bank sign-up</h3>
+      <h3 className="p-2 d-none d-md-block ">RABO Bank Registration Form</h3>
     </nav>
   );
 };
