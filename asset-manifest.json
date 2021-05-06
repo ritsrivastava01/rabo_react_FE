@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/rabo_react_FE/static/css/main.1aace1a1.chunk.css",
-    "main.js": "/rabo_react_FE/static/js/main.633f9904.chunk.js",
-    "main.js.map": "/rabo_react_FE/static/js/main.633f9904.chunk.js.map",
+    "main.js": "/rabo_react_FE/static/js/main.df0893fe.chunk.js",
+    "main.js.map": "/rabo_react_FE/static/js/main.df0893fe.chunk.js.map",
     "runtime-main.js": "/rabo_react_FE/static/js/runtime-main.16f45e4a.js",
     "runtime-main.js.map": "/rabo_react_FE/static/js/runtime-main.16f45e4a.js.map",
     "static/css/2.723cf28f.chunk.css": "/rabo_react_FE/static/css/2.723cf28f.chunk.css",
@@ -18,6 +18,6 @@
     "static/css/2.723cf28f.chunk.css",
     "static/js/2.d592a6f8.chunk.js",
     "static/css/main.1aace1a1.chunk.css",
-    "static/js/main.633f9904.chunk.js"
+    "static/js/main.df0893fe.chunk.js"
   ]
 }
