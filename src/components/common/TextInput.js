@@ -26,6 +26,7 @@ const TextInput = ({
       <input
         type={type}
         name={name}
+        data-testid={'input_' + name}
         id={'input_' + name}
         placeholder={placeholder}
         onChange={onChange}
@@ -33,7 +34,13 @@ const TextInput = ({
         required
         className={`form-control ${error ? 'is-invalid' : ''}`}
       ></input>
-      <div className="invalid-feedback">{error}</div>
+      <div
+        className="invalid-feedback"
+        data-foo="error"
+        data-testid={'error_' + name}
+      >
+        {error}
+      </div>
     </div>
   );
 };

@@ -17,7 +17,11 @@ function App() {
           <Route component={PageNotFound}></Route>
         </Switch>
       </div>
-      <ToastContainer autoClose={3000} hideProgress></ToastContainer>
+      <ToastContainer
+        autoClose={3000}
+        hideProgress
+        data-testid="message"
+      ></ToastContainer>
     </>
   );
 }

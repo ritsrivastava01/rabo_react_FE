@@ -46,37 +46,18 @@ const LoginPage = () => {
       lastName: user.lname,
       email: user.email,
     };
-    await saveCall(payload);
-    await wait();
-    await getCall();
-  };
 
-  /**
-   * async save call
-   * @param  {} payload
-   */
-  const saveCall = async (payload) => {
     setApiCallInProgress(true);
     const resSaveUser = await userAPI.saveUser(payload);
-    console.log(resSaveUser);
     setApiCallInProgress(false);
+
     if (resSaveUser.error) return toast.error(resSaveUser.error);
     if (resSaveUser.status === 200) toast.success(messages.SAVE_USER_SUCCESS);
-  };
 
-  /**
-   * Wait for 4 sec
-   */
-  const wait = async () => {
     setApiCallInProgress(true);
     await sleep(4000);
     setApiCallInProgress(false);
-  };
 
-  /**
-   * async get user call
-   */
-  const getCall = async () => {
     setApiCallInProgress(true);
     const resGetUser = await userAPI.getUser();
     setApiCallInProgress(false);
@@ -90,7 +71,6 @@ const LoginPage = () => {
   const isFormValid = () => {
     const errors = validateUserForm(user);
     setErrors(errors);
-    console.log(errors);
     return Object.keys(errors).length === 0;
   };
 

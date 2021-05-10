@@ -55,6 +55,7 @@ const LoginForm = ({ apiCallStatus, user, onChange, onSave, errors }) => {
           error={errors.email}
         ></TextInput>
         <button
+          data-testid="submit_button"
           className="btn btn btn-primary btn-lg col shadow mb-4"
           type="submit"
           disabled={apiCallStatus}
