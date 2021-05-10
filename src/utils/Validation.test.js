@@ -58,5 +58,11 @@ describe('Validation tests', () => {
       error = validateUserForm(user);
       expect(error.password).toBeTruthy();
     });
+
+    it('case: No password validation error if its valid', () => {
+      user = { ...defaultUser, password: 'Password' };
+      error = validateUserForm(user);
+      expect(error.password).toBeUndefined();
+    });
   });
 });
