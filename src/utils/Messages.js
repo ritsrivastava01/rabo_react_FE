@@ -1,6 +1,6 @@
 export const messages = {
   SAVE_USER_SUCCESS: 'User saved successfully!',
-  GET: 'User retrieved successfully!',
+  GET_USER_SUCCESS: 'User retrieved successfully!',
   ERROR: {
     FIRST_NAME_MISSING: 'Please enter First name.',
     LAST_NAME_MISSING: 'Please enter Last name.',

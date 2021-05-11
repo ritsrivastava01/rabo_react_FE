@@ -62,7 +62,7 @@ const LoginPage = () => {
     const resGetUser = await userAPI.getUser();
     setApiCallInProgress(false);
     if (resGetUser.error) return toast.error(resGetUser.error);
-    if (resGetUser.data) toast.success(messages.SAVE_USER_SUCCESS);
+    if (resGetUser.data) toast.success(messages.GET_USER_SUCCESS);
   };
 
   /**
