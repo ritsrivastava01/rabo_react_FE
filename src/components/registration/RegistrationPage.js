@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import * as userAPI from '../../services/UserService';
-import { sleep, initialUserState } from '.././../utils/Utils';
+import { sleep, initialUserState } from '../../utils/Utils';
 import LoginForm from './LoginForm';
 import { toast } from 'react-toastify';
 import { validateUserForm } from '../../utils/Validation';
 import { messages } from '../../utils/Messages';
 
 /**
- * Login page ==> smart component
+ * Registration page ==> smart component
  * Used to handle the state update, errors, api calls
  */
-const LoginPage = () => {
+const RegistrationPage = () => {
   const [user, setUser] = useState(initialUserState);
   const [errors, setErrors] = useState({});
   const [apiCallInProgress, setApiCallInProgress] = useState(false);
@@ -87,4 +87,4 @@ const LoginPage = () => {
     ></LoginForm>
   );
 };
-export default LoginPage;
+export default RegistrationPage;

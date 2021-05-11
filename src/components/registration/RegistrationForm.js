@@ -7,7 +7,13 @@ import TextInput from '../common/TextInput';
  * @param  {} onSave ==> Form save handler
  * @param  {} errors} ==> Errors on the form
  */
-const LoginForm = ({ apiCallStatus, user, onChange, onSave, errors }) => {
+const RegistrationForm = ({
+  apiCallStatus,
+  user,
+  onChange,
+  onSave,
+  errors,
+}) => {
   return (
     <form
       onSubmit={onSave}
@@ -66,4 +72,4 @@ const LoginForm = ({ apiCallStatus, user, onChange, onSave, errors }) => {
     </form>
   );
 };
-export default LoginForm;
+export default RegistrationForm;
