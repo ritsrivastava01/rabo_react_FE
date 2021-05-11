@@ -51,7 +51,9 @@ const RegistrationPage = () => {
     const resSaveUser = await userAPI.saveUser(payload);
     setApiCallInProgress(false);
 
-    if (resSaveUser.error) return toast.error(resSaveUser.error);
+    if (resSaveUser.error || resSaveUser.status !== 200)
+      return toast.error(resSaveUser.error);
+
     if (resSaveUser.status === 200) toast.success(messages.SAVE_USER_SUCCESS);
 
     setApiCallInProgress(true);
@@ -61,7 +63,8 @@ const RegistrationPage = () => {
     setApiCallInProgress(true);
     const resGetUser = await userAPI.getUser();
     setApiCallInProgress(false);
-    if (resGetUser.error) return toast.error(resGetUser.error);
+    if (resGetUser.error || resGetUser.status !== 200)
+      return toast.error(resGetUser.error);
     if (resGetUser.data) toast.success(messages.GET_USER_SUCCESS);
   };
 
