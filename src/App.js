@@ -1,4 +1,3 @@
-import LoginPage from './components/login/LoginPage';
 import { Route, Switch } from 'react-router-dom';
 import PageNotFound from './components/PageNotFound';
 import Header from './components/common/Header';
@@ -6,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
+import RegistrationPage from './components/registration/RegistrationPage';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <Header> </Header>
       <div className="container">
         <Switch>
-          <Route path="/" component={LoginPage}></Route>
+          <Route path="/" component={RegistrationPage}></Route>
           <Route component={PageNotFound}></Route>
         </Switch>
       </div>

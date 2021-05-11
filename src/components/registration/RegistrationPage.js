@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import * as userAPI from '../../services/UserService';
 import { sleep, initialUserState } from '../../utils/Utils';
-import LoginForm from './LoginForm';
 import { toast } from 'react-toastify';
 import { validateUserForm } from '../../utils/Validation';
 import { messages } from '../../utils/Messages';
+import RegistrationForm from './RegistrationForm';
 
 /**
  * Registration page ==> smart component
@@ -78,13 +78,13 @@ const RegistrationPage = () => {
    * Login form
    */
   return (
-    <LoginForm
+    <RegistrationForm
       user={user}
       onChange={onChangeHandler}
       onSave={onSaveHandler}
       errors={errors}
       apiCallStatus={apiCallInProgress}
-    ></LoginForm>
+    ></RegistrationForm>
   );
 };
 export default RegistrationPage;
