@@ -1,10 +1,10 @@
 import React from 'react';
-import LoginPage from './LoginPage';
 import { act } from 'react-dom/test-utils';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as userAPI from '../../services/UserService';
 import '@testing-library/jest-dom';
+import RegistrationPage from './RegistrationPage';
 
 describe('UserService', () => {
   const defaultUser = {
@@ -15,7 +15,7 @@ describe('UserService', () => {
   };
 
   it('renders sign up form', () => {
-    render(<LoginPage />);
+    render(<RegistrationPage />);
     expect(screen.getByTestId('input_fname')).toBeInTheDocument();
     expect(screen.getByTestId('input_lname')).toBeInTheDocument();
     expect(screen.getByTestId('input_email')).toBeInTheDocument();
@@ -24,7 +24,7 @@ describe('UserService', () => {
   });
 
   it('validation error message is shown when form is submitted without details', () => {
-    const { container } = render(<LoginPage />);
+    const { container } = render(<RegistrationPage />);
     userEvent.click(screen.getByTestId('submit_button'));
     expect(container.getElementsByClassName('invalid-feedback').length).toBe(4);
 
@@ -45,7 +45,7 @@ describe('UserService', () => {
       return Promise.resolve(defaultUser);
     });
     jest.useFakeTimers();
-    render(<LoginPage />);
+    render(<RegistrationPage />);
     userEvent.type(screen.getByTestId('input_fname'), defaultUser.fname);
     userEvent.type(screen.getByTestId('input_lname'), defaultUser.lname);
     userEvent.type(screen.getByTestId('input_email'), defaultUser.email);
@@ -67,7 +67,7 @@ describe('UserService', () => {
       return Promise.resolve(defaultUser);
     });
     jest.useFakeTimers();
-    render(<LoginPage />);
+    render(<RegistrationPage />);
     userEvent.type(screen.getByTestId('input_fname'), defaultUser.fname);
     userEvent.type(screen.getByTestId('input_lname'), defaultUser.lname);
     userEvent.type(screen.getByTestId('input_email'), defaultUser.email);
