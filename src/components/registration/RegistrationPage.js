@@ -56,9 +56,7 @@ const RegistrationPage = () => {
 
     setApiCallInProgress(true);
     await sleep(4000);
-    setApiCallInProgress(false);
 
-    setApiCallInProgress(true);
     const resGetUser = await userAPI.getUser();
     setApiCallInProgress(false);
     if (resGetUser.error) return toast.error(resGetUser.error);
